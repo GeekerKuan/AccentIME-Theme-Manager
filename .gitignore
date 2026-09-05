@@ -1,0 +1,23 @@
+# Native build outputs
+bin/
+obj/
+obj-tests/
+obj-voice-locator/
+obj-voice-preview/
+*.pdb
+*.iobj
+*.ipdb
+*.wixpdb
+*.log
+*.recipe
+
+# Local tools and editor state
+.tools/
+.vs/
+*.user
+
+# Experimental overlay prototypes; these are not part of the shipped manager.
+VoiceSurfacePreview.cpp
+VoiceWindowLocator.cpp
+AccentIME.VoiceSurface.Preview.vcxproj
+AccentIME.VoiceWindowLocator.vcxproj

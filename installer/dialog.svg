@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="493" height="312" viewBox="0 0 493 312">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="164" y2="312" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101820"/>
+      <stop offset="1" stop-color="#132C3D"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="34" y1="74" x2="130" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00B97B"/>
+      <stop offset="1" stop-color="#0078D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="493" height="312" fill="#FFFFFF"/>
+  <rect width="164" height="312" fill="url(#panel)"/>
+  <rect x="27" y="74" width="110" height="110" rx="26" fill="#0B1116" stroke="#314957" stroke-width="2"/>
+  <path d="M54 158 75 100h15l21 58H94l-4-13H74l-4 13H54Zm24-28h8l-4-13-4 13Z" fill="url(#accent)"/>
+  <circle cx="112" cy="102" r="9" fill="#F4F7F9"/>
+  <text x="26" y="218" fill="#FFFFFF" font-family="Segoe UI" font-size="15" font-weight="600">AccentIME</text>
+  <text x="26" y="241" fill="#9FB7C5" font-family="Segoe UI" font-size="11">Theme Manager</text>
+</svg>

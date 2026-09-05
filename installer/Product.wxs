@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package Name="AccentIME Theme Manager"
+           Manufacturer="AccentIME Project"
+           Version="0.5.0"
+           Language="2052"
+           UpgradeCode="{EC2A8D3A-81C5-46C8-95B5-A4894623D1FE}"
+           Scope="perMachine"
+           InstallerVersion="500"
+           Compressed="yes">
+
+    <SummaryInformation Description="Windows 微信输入法候选项与 WinUI 3 风格语音输入界面管理工具"
+                        Manufacturer="AccentIME Project" />
+    <MajorUpgrade DowngradeErrorMessage="已安装更新版本的 AccentIME Theme Manager。" />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="ProductIcon" SourceFile="app.ico" />
+    <Property Id="ARPPRODUCTICON" Value="ProductIcon" />
+    <Launch Condition="VersionNT64"
+            Message="AccentIME Theme Manager 需要 64 位 Windows。" />
+
+    <WixVariable Id="WixUIDialogBmp" Value="installer\dialog.bmp" />
+    <WixVariable Id="WixUIBannerBmp" Value="installer\banner.bmp" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="AccentIME Theme Manager">
+        <Component Id="MainApplication" Guid="{259DC6F2-261F-4BCA-972B-4D6C93CD393B}" Bitness="always64">
+          <File Id="MainExecutable"
+                Source="bin\x64\Release\AccentIME.ThemeManager.exe"
+                KeyPath="yes" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ProgramMenuProductFolder" Name="AccentIME Theme Manager">
+        <Component Id="ProgramMenuShortcut" Guid="{81CD3843-7CFB-48BE-989C-52CC9692CD98}" Bitness="always64">
+          <Shortcut Id="ApplicationStartMenuShortcut"
+                    Name="AccentIME Theme Manager"
+                    Description="管理微信输入法候选项与 WinUI 3 风格语音输入界面"
+                    Target="[INSTALLFOLDER]AccentIME.ThemeManager.exe"
+                    WorkingDirectory="INSTALLFOLDER" />
+          <RemoveFolder Id="RemoveProgramMenuProductFolder" On="uninstall" />
+          <RegistryValue Root="HKLM"
+                         Key="Software\AccentIME\ThemeManager"
+                         Name="Installed"
+                         Type="integer"
+                         Value="1"
+                         KeyPath="yes" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
+
+    <Feature Id="MainFeature" Title="AccentIME Theme Manager" Level="1">
+      <ComponentRef Id="MainApplication" />
+      <ComponentRef Id="ProgramMenuShortcut" />
+    </Feature>
+
+    <CustomAction Id="CleanupAccentWatcher"
+                  FileRef="MainExecutable"
+                  ExeCommand="--uninstall-cleanup"
+                  Execute="deferred"
+                  Impersonate="no"
+                  Return="check" />
+    <InstallExecuteSequence>
+      <Custom Action="CleanupAccentWatcher"
+              Before="RemoveFiles"
+              Condition="REMOVE~=&quot;ALL&quot;" />
+    </InstallExecuteSequence>
+
+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+  </Package>
+</Wix>

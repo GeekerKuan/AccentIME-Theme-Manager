@@ -1,0 +1,32 @@
+#include <windows.h>
+#include "resource.h"
+
+IDI_APPICON ICON "app.ico"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,5,0,0
+ PRODUCTVERSION 0,5,0,0
+ FILEFLAGSMASK 0x3fL
+ FILEFLAGS 0x0L
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "080404B0"
+    BEGIN
+      VALUE "CompanyName", "AccentIME Project\0"
+      VALUE "FileDescription", "AccentIME Theme Manager\0"
+      VALUE "FileVersion", "0.5.0.0\0"
+      VALUE "InternalName", "AccentIME.ThemeManager\0"
+      VALUE "OriginalFilename", "AccentIME.ThemeManager.exe\0"
+      VALUE "ProductName", "AccentIME Theme Manager\0"
+      VALUE "ProductVersion", "0.5.0 Preview\0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0804, 1200
+  END
+END
